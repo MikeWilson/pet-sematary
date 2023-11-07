@@ -4,13 +4,12 @@ import Forest from './Components/Forest';
 import { CameraShake } from '@react-three/drei';
 import Fog from './Components/Fog';
 
-
+let speed = 1;
 
 function Rig({cursorPosition}) {
   const { camera,  } = useThree()
   useFrame(() => {
-    const speed = Math.abs(cursorPosition.y);
-    camera.position.z -= 0.08;
+    camera.position.z -= 0.08 * speed;
     camera.position.x += cursorPosition.x * 0.2;
     camera.position.y += cursorPosition.y * 0.2;
     camera.rotation.z -= cursorPosition.x * 0.1;
@@ -19,6 +18,14 @@ function Rig({cursorPosition}) {
 
   return <CameraShake maxYaw={0.01} maxPitch={0.01} maxRoll={0.01} yawFrequency={0.5} pitchFrequency={0.5} rollFrequency={0.4} />;
 }
+
+// event for mouse click
+window.addEventListener('mousedown', () => {
+  speed = 2;
+});
+window.addEventListener('mouseup', () => {
+  speed = 1;
+});
 
 function App() {
 
@@ -43,9 +50,9 @@ function App() {
   return (
     <Canvas color='black' style={{width: '100vw', height: '100vh'}} >
       <Rig cursorPosition={cursorPosition} />
-      <Forest treeCount={200} spread={100} />
+      <Forest treeCount={200} spread={10} />
       <ambientLight intensity={.7} />
-      <Fog color={0xffffff} density={0.02} />
+      <Fog color={0xffffff} density={0.09} />
       <directionalLight 
         position={[10, 10, 10]} // Position of the sun, adjust as needed
         color="red" 
