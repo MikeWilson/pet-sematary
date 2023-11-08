@@ -50,7 +50,7 @@ function App() {
   return (
     <Canvas color='black' style={{width: '100vw', height: '100vh'}} >
       <Rig cursorPosition={cursorPosition} />
-      <Forest treeCount={200} spread={10} />
+      <Forest treeCount={400} spread={10} />
       <ambientLight intensity={.7} />
       <Fog color={0xffffff} density={0.09} />
       <directionalLight 

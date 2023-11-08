@@ -15,28 +15,28 @@ const Tree = React.memo(({ position, scale, gltf }) => {
 });
 
 const calculateHillHeight = (x, z) => {
-  const frequency = 3; // The frequency of the hills
-  const amplitude = 1; // The amplitude (height) of the hills
+  const frequency = 0.1; // The frequency of the hills
+  const amplitude = 2; // The amplitude (height) of the hills
   return Math.sin(frequency * (x + z)) * amplitude;
 };
 
 const Forest = ({ treeCount, spread }) => {
   const gltf = useGLTF("./redwood.glb", true);
-  const modelOriginalHeight = 0.5935667157173157; // Actual model height
+  const modelOriginalHeight = 0.59; // Actual model height
 
   // Generate initial positions and scales for the trees
   const initialTrees = useMemo(() => {
     return new Array(treeCount).fill().map(() => {
       const x = (Math.random() - 0.5) * spread * 3;
       const z = (Math.random() - 0.5) * spread * 10;
-      const desiredHeight = Math.random() * 2 + 0.5; // Random height between 0.5 and 2.5
+      const desiredHeight = Math.random() * 1.5 + 1;
       const scaleY = desiredHeight / modelOriginalHeight; // Calculate the scale factor for y-axis
       const hillHeight = calculateHillHeight(x, z); // Get the hill height for this tree's position
   
       return {
         position: new Vector3(
           x,
-          (desiredHeight / 2) + hillHeight, // Position the base at the hill height
+          hillHeight + (modelOriginalHeight * scaleY) / 2, // Position the base at the hill height
           z
         ),
         scale: [1, scaleY, 1], // Apply the scale factor only to the y-axis
@@ -54,7 +54,7 @@ const Forest = ({ treeCount, spread }) => {
         if (tree.position.z > camera.position.z) {
           const x = (Math.random() - 0.5) * spread * 3;
           const z = camera.position.z - (Math.random() * 30 + 30);
-          const desiredHeight = Math.random() * 2 + 0.5;
+          const desiredHeight = Math.random() * 1.5 + 1;
           const scaleY = desiredHeight / modelOriginalHeight;
           const hillHeight = calculateHillHeight(x, z); // Get the new hill height for the respawned tree
   
@@ -62,7 +62,7 @@ const Forest = ({ treeCount, spread }) => {
             ...tree,
             position: new Vector3(
               camera.position.x + x,
-              (desiredHeight / 2) + hillHeight, // Adjust the y position based on the hill height
+              hillHeight + (modelOriginalHeight * scaleY) / 2,
               z
             ),
             scale: [1, scaleY, 1],
@@ -88,3 +88,4 @@ const Forest = ({ treeCount, spread }) => {
 };
 
 export default Forest;
+
