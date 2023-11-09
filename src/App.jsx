@@ -10,10 +10,10 @@ function Rig({cursorPosition}) {
   const { camera,  } = useThree()
   useFrame(() => {
     camera.position.z -= 0.08 * speed;
-    // camera.position.x += cursorPosition.x * 0.2;
-    // camera.position.y += cursorPosition.y * 0.2;
-    // camera.rotation.z -= cursorPosition.x * 0.1;
-    // camera.rotation.x = cursorPosition.y * 0.1;
+    camera.position.x += cursorPosition.x * 0.2;
+    camera.position.y += cursorPosition.y * 0.2;
+    camera.rotation.z -= cursorPosition.x * 0.1;
+    camera.rotation.x = cursorPosition.y * 0.1;
   });
 
   return <CameraShake maxYaw={0.01} maxPitch={0.01} maxRoll={0.01} yawFrequency={0.5} pitchFrequency={0.5} rollFrequency={0.4} />;
