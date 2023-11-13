@@ -26,7 +26,7 @@ const Tree = React.memo(({ position, scale, gltf, rotation, treeColor }) => {
 // Create a GUI
 const gui = new GUI();
 const config = {
-  hillAmplitude: 1.5,
+  hillAmplitude: 1.4,
   hillFrequency: 0.1,
 };
 

@@ -33,7 +33,7 @@ function PointerEventsWrapper({ children }) {
 }
 
 let speed = .75;
-let minHeight = 1;
+let minHeight = 1.5;
 let maxHeight = 50;
 
 function Rig({cursorPosition}) {
@@ -99,7 +99,7 @@ function App() {
   const divStyle = {
     width: '100vw',
     height: '100vh',
-    background: 'black', // or white depending on the effect you want
+    background: 'linear-gradient(148deg, #bdf2ff 0%, hsl(269, 47%, 74%) 100%)', // Edit the colors as needed
     mixBlendMode: 'screen',
     filter: 'contrast(500%)',
   };
@@ -109,16 +109,16 @@ function App() {
       <div style={divStyle}>
         <Canvas color='black' style={{width: '100vw', height: '100vh', filter: 'blur(2px)'}} ref={canvasRef}>
           <Rig cursorPosition={cursorPosition} />
-          <Forest treeCount={500} spread={15} treeColor={"white"} distance={40}/>
+          <Forest treeCount={500} spread={15} treeColor={"black"} distance={45}/>
           <ambientLight intensity={0.5} />
-          <Fog color={0x000000} density={0.02} />
+          <Fog color={0xffffff} density={0.02} />
           <directionalLight 
             position={[5, 7, -15]} // Position of the sun, adjust as needed
             color="red" 
             intensity={4} 
             castShadow // If you want the sun to cast shadows
           />
-          <Moon color="white" />
+          <Moon color="black" />
         </Canvas>
       </div>
     </PointerEventsWrapper>

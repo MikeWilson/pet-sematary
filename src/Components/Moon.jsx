@@ -19,7 +19,7 @@ function Moon({color}) {
 
   return (
     <mesh ref={moonRef}>
-      <sphereGeometry args={[2, 32, 32]} /> {/* 1 unit radius, 32 width segments, 32 height segments */}
+      <sphereGeometry args={[1.7, 32, 32]} /> {/* 1 unit radius, 32 width segments, 32 height segments */}
       <meshBasicMaterial color={color} />
     </mesh>
   );
