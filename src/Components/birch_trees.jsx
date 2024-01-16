@@ -14,7 +14,7 @@ const AnimatedModel = memo(({ url, ...props }) => {
   useEffect(() => {
     actions.windAction.play();
   }, [mixer]);
-
+ 
   // useFrame((state, delta) => {
   //   actions["Action"].mixer.update(delta);
   // });
