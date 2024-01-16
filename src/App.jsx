@@ -4,7 +4,7 @@ import { Environment, OrbitControls, Sky, Stars} from '@react-three/drei';
 import Floor from './Components/floor';
 import Lantern from './Components/lantern';
 // import Fog from './Components/fog';
-import Moon from './Components/moon';
+import Moon from './Components/Moon';
 import BirchTrees from './Components/birch_trees';
 
 const moonPosition = [-80,150,-300];
