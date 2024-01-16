@@ -1,11 +1,11 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, Sky, Stars} from '@react-three/drei';
-import Floor from './Components/floor';
-import Lantern from './Components/lantern';
-import Fog from './Components/fog';
-import Moon from './Components/moon';
-import BirchTrees from './Components/birch_trees';
+import Floor from './components/floor';
+import Lantern from './components/lantern';
+// import Fog from './Components/fog';
+import Moon from './components/moon';
+import BirchTrees from './components/birch_trees';
 
 const moonPosition = [-80,150,-300];
 
@@ -21,7 +21,7 @@ function App() {
       <Lantern intensity={15} color={"#ffd8a1"} />
       <directionalLight intensity={1} color={'#ebfffd'} position={moonPosition}/>
 
-      <Fog color={"black"} density={0.00025}/>
+      {/* <Fog color={"black"} density={0.00025}/> */}
 
 
       <Moon color={"#ffd8a1"} position={moonPosition}/>
