@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useThree } from '@react-three/fiber'
 import { FogExp2 } from 'three'
 
-export default function Fog({ color, density }) {
+export default function Fog({ color = "black", density = 0.00025 }) {
   const { scene } = useThree();
 
   useEffect(() => {
